@@ -6,6 +6,9 @@ plugins {
 android {
     namespace = "com.abc.campushub"
     compileSdk = 35
+    packagingOptions {
+        exclude ("META-INF/DEPENDENCIES")
+    }
     defaultConfig {
         applicationId = "com.abc.campushub"
         minSdk = 29
@@ -37,12 +40,19 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.auth)
+    implementation(libs.swiperefreshlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-
-
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
+    implementation("com.google.api-client:google-api-client-android:1.31.2")
+    implementation("com.google.apis:google-api-services-drive:v3-rev20211107-1.32.1")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.9.0")
     implementation("com.google.firebase:firebase-auth:22.1.1")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-core:21.1.1")
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))

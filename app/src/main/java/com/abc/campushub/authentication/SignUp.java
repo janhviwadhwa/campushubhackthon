@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
-    private Button btnSignUp, btnlogin;
+    private Button btnSignUp;
+    private TextView logintxtbtn;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
@@ -26,13 +28,13 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         mAuth = FirebaseAuth.getInstance();
-        btnlogin = findViewById(R.id.btnlogin);
+        logintxtbtn = findViewById(R.id.logintxtbtn);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
         progressBar = findViewById(R.id.progressBar);
         btnSignUp.setOnClickListener(view -> registerUser());
-        btnlogin.setOnClickListener(View -> startActivity(new Intent(SignUp.this, LoginActivity.class)));
+        logintxtbtn.setOnClickListener(View -> startActivity(new Intent(SignUp.this, LoginActivity.class)));
     }
 
     private void registerUser() {
