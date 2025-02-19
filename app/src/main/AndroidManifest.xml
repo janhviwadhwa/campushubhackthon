@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Campushub"
         tools:targetApi="31">
         <activity
+            android:name=".mainprofile"
+            android:exported="false" />
+        <activity
+            android:name=".profile"
+            android:exported="false" />
+        <activity
             android:name=".authentication.LoginActivity"
             android:exported="false" />
         <activity
@@ -29,7 +35,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

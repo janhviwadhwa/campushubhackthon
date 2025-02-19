@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/gradient">
+
+    <!-- Profile Picture -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"/>
+
+    <!-- PROFILE Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PROFILE"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#021F47"
+        android:layout_below="@id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"/>
+
+    <!-- First Name -->
+
+    <!-- Last Name -->
+
+    <!-- Username -->
+
+    <!-- Email -->
+
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="165dp"
+        android:background=""
+        android:hint="First Name"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/last_name"
+        android:layout_marginTop="70dp"
+        android:background=""
+        android:hint="Username"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/username2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/last_name"
+        android:layout_marginTop="14dp"
+        android:background=""
+        android:hint="Last name"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background=""
+        android:layout_below="@id/username"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"/>
+
+    <!-- Phone -->
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background=""
+        android:layout_below="@id/email"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"/>
+
+    <!-- Gender -->
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gender"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background=""
+        android:layout_below="@id/phone"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"/>
+
+    <!-- New Password -->
+    <EditText
+        android:id="@+id/new_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="New Password"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background=""
+        android:layout_below="@id/gender"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"/>
+
+    <!-- Retype Password -->
+    <EditText
+        android:id="@+id/retype_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Re-Type New Password"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:background=""
+        android:layout_below="@id/new_password"
+        android:layout_marginTop="10dp"
+        android:minHeight="48dp"/>
+
+    <!-- Change Password Button -->
+    <Button
+        android:id="@+id/change_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#021F47"
+        android:layout_below="@id/retype_password"
+        android:layout_marginTop="20dp"/>
+</RelativeLayout>
