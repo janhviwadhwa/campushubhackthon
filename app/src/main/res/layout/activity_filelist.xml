@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundd">
+
+    <!-- Search Bar -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/white"
+        android:iconifiedByDefault="false"
+        android:queryHint="SEARCH FILE" />
+
+    <!-- RecyclerView to display file list -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_marginTop="10dp"
+        android:layout_above="@id/btnAddFile" />
+
+    <!-- Floating Action Button for adding files -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+</RelativeLayout>
