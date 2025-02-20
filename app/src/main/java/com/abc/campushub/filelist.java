@@ -1,5 +1,7 @@
 package com.abc.campushub;
 
+import static okhttp3.internal.Util.filterList;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,8 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import androidx.appcompat.widget.SearchView;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +23,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -42,6 +49,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -52,6 +60,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class filelist extends AppCompatActivity {
+    private CircleImageView btnProfile;
     private static final int PICK_FILE_REQUEST = 2;
     private FloatingActionButton btnAddFile;
     private static final String FILES_URL = "https://campus-hub-20in.onrender.com/files";
@@ -64,18 +73,34 @@ public class filelist extends AppCompatActivity {
     private static final String UPLOAD_URL = "https://campus-hub-20in.onrender.com/upload";
     private Uri selectedFileUri;  // To store selected file URI
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filelist);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        androidx.appcompat.widget.SearchView searchView =
+                findViewById(R.id.searchView);
         fileListAdapter = new MyListAdapter(this, fileList);
-
+        btnProfile = findViewById(R.id.btnProfile);
+        loadProfileImage();
         recyclerView.setAdapter(fileListAdapter);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterList(query);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return false;
+            }
+        });
         swipeRefreshLayout.setEnabled(false);
         fetchFileList();
         swipeRefreshLayout.setEnabled(true);
@@ -85,6 +110,20 @@ public class filelist extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(() -> {
             fetchFileList();  // Refresh file list on swipe down
         });
+        btnProfile.setOnClickListener(view -> {
+            Intent intent = new Intent(this, profile.class);
+            startActivity(intent);
+        });
+    }
+
+    private void filterList(String query) {
+        List<FileModel> filteredList = new ArrayList<>();
+        for (FileModel file : fileList) {
+            if (file.getFileName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(file);
+            }
+        }
+        fileListAdapter.updateList(filteredList);
     }
 
 
@@ -93,6 +132,32 @@ public class filelist extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
         startActivityForResult(intent, PICK_FILE_REQUEST);
+    }
+
+    private void loadProfileImage() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user != null) {
+            String userEmail = user.getEmail();
+            if (userEmail != null) {
+                db.collection("users").document(userEmail)
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                String imageUrl = documentSnapshot.getString("profileImage");
+                                if (imageUrl != null && !imageUrl.isEmpty()) {
+                                    Glide.with(this)
+                                            .load(imageUrl)
+                                            .placeholder(R.drawable.profile)  // Add a default image if needed
+                                            .into(btnProfile);
+                                }
+                            }
+                        })
+                        .addOnFailureListener(e -> Log.e("Firestore", "Error loading profile image", e));
+            }
+        }
     }
 
 
@@ -340,6 +405,7 @@ public class filelist extends AppCompatActivity {
             }
         });
     }
+
     private List<FileModel> parseJson(String jsonResponse) {
         List<FileModel> fileList = new ArrayList<>();
         try {

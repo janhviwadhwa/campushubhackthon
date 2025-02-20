@@ -1,55 +1,65 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backgroundd"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="@drawable/backgroundd">
-
+    android:padding="20dp">
     <TextView
         android:id="@+id/tvLoginTitle"
-        android:layout_marginTop="180sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:textSize="44sp"
-        android:textStyle="bold"
-        android:textColor="#021F47"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="180sp"
+        android:layout_marginBottom="20dp"
+        android:text="LOGIN"
+        android:textColor="#021F47"
+        android:textSize="44sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter University Id"
         android:layout_marginTop="40sp"
+        android:hint="Enter University Id"
+        android:inputType="textEmailAddress"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:inputType="textEmailAddress" />
+        android:textColorHint="@color/black" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="Enter Password"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
         android:inputType="textPassword"
-        android:layout_marginTop="10dp"/>
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_marginTop="30sp"
         android:backgroundTint="#021F47"
-        android:layout_marginTop="30sp"/>
+        android:text="Login" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txtSignUpbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="sign up"
+        android:textColor="@color/black" />
+
 </LinearLayout>

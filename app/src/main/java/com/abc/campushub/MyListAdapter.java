@@ -1,6 +1,7 @@
 package com.abc.campushub;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,25 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.FileViewHo
                 .load(file.getFileUrl())
                 .placeholder(R.drawable.img) // Optional: Set a placeholder image
                 .into(holder.fileImage);
+
+        // Set OnClickListener for opening FileDetailActivity
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, FileDetailActivity.class);
+            intent.putExtra(FileDetailActivity.EXTRA_FILE_NAME, file.getFileName());
+            intent.putExtra(FileDetailActivity.EXTRA_FILE_URL, file.getFileUrl());
+            context.startActivity(intent); // Start activity
+        });
     }
 
     @Override
     public int getItemCount() {
         return fileList.size();
+    }
+
+    public void updateList(List<FileModel> newList) {
+        fileList.clear();
+        fileList.addAll(newList);
+        notifyDataSetChanged();
     }
 
     static class FileViewHolder extends RecyclerView.ViewHolder {

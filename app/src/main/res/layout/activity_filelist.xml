@@ -5,12 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Profile Button -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btnProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/profile" />
+
     <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"
+        android:layout_toStartOf="@id/btnProfile"
         android:background="@android:color/white"
         android:iconifiedByDefault="false"
         android:queryHint="SEARCH FILE" />
@@ -20,8 +32,7 @@
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchView"
-        >
+        android:layout_below="@id/searchView">
 
         <!-- RecyclerView to display file list -->
         <androidx.recyclerview.widget.RecyclerView

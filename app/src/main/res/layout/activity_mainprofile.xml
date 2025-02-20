@@ -1,71 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
+    android:background="@drawable/gradient"
     android:gravity="center_horizontal"
-    android:background="@drawable/gradient">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <!-- Profile Picture -->
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/profile"
-        android:layout_marginTop="40sp"/>
+        android:src="@drawable/profile" />
 
     <!-- Profile Title -->
     <TextView
         android:id="@+id/profile_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="PROFILE"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:textColor="#021F47"
-        android:layout_marginTop="24dp"/>
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <!-- First Name -->
     <TextView
         android:id="@+id/first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="First Name: John"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:text="First Name: "
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
+        android:textSize="18sp" />
 
     <!-- Last Name -->
     <TextView
         android:id="@+id/last_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Last Name: Doe"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:text="Last Name: "
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
+        android:textSize="18sp" />
 
-    <!-- Phone Number -->
+    <!-- Username -->
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Username: "
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Email: "
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <!-- Phone -->
     <TextView
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone: +91 9876543210"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:text="Phone: "
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
+        android:textSize="18sp" />
 
-    <!-- Mobile Phone -->
+    <!-- Gender -->
     <TextView
-        android:id="@+id/mobile_phone"
+        android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mobile Phone: +91 9876543211"
-        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        android:text="Gender: "
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
+        android:textSize="18sp" />
 
+    <!-- Edit Profile Button -->
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Edit Profile"
+        android:textColor="@android:color/white" />
+
+    <!-- Log Out Button -->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#D9B390"
+        android:text="Log Out"
+        android:textColor="@android:color/white" />
 </LinearLayout>

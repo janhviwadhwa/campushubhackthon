@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.abc.campushub.R;
@@ -20,9 +20,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
+    private TextView txtsignup;
     private Button btnLogin;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -38,13 +40,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         mAuth = FirebaseAuth.getInstance();
-
+        txtsignup = findViewById(R.id.txtSignUpbtn);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         btnLogin = findViewById(R.id.btnLogin);
         progressBar = findViewById(R.id.progressBar);
-
         btnLogin.setOnClickListener(view -> loginUser());
+        txtsignup.setOnClickListener(
+                view -> {
+                    Intent intent = new Intent(LoginActivity.this, SignUp.class);
+                    startActivity(intent);
+                }
+        );
     }
 
     private void loginUser() {
